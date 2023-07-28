@@ -15,11 +15,6 @@ class InvoiceStatusSerializer(ModelSerializer):
     class Meta:
         model = Invoice_Status
         fields = '__all__'
-
-class InvoiceItemSerializer(ModelSerializer):
-    class Meta:
-        model = Invoice_Items
-        fields = '__all__'
         
 class PaymentTermSerializer(ModelSerializer):
     class Meta:
