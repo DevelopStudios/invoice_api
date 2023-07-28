@@ -3,6 +3,8 @@ from django.db import models
 # Create your models here.
 #name qty price total
 class Invoice_Items(models.Model):
+    def __str__(self):
+        return self.name
     name = models.CharField(max_length=200)
     qty = models.IntegerField(default=0)
     price = models.IntegerField(default=0)
@@ -19,6 +21,8 @@ class Payment_Term(models.Model):
         return self.term
 
 class Invoice(models.Model):
+    def __str__(self):
+        return self.client_name
     client_name = models.CharField(max_length=100, null=True)
     client_email = models.EmailField(null=True)
     to_city = models.CharField(max_length=100, null=True)
