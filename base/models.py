@@ -5,6 +5,7 @@ from django.db import models
 class Invoice_Items(models.Model):
     def __str__(self):
         return self.name
+    
     name = models.CharField(max_length=200)
     qty = models.IntegerField(default=0)
     price = models.IntegerField(default=0)
@@ -23,6 +24,7 @@ class Payment_Term(models.Model):
 class Invoice(models.Model):
     def __str__(self):
         return self.client_name
+    
     client_name = models.CharField(max_length=100, null=True)
     client_email = models.EmailField(null=True)
     to_city = models.CharField(max_length=100, null=True)
