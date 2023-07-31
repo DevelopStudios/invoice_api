@@ -50,27 +50,27 @@ def payment_terms(request):
 
 @api_view(['GET','POST'])
 def item_detail(request, id):
-    item = Invoice_Items.objects.get(id = id)
+    item = Invoice_Items.objects.get(pk = id)
     if request.method == 'GET':
         serializer = InvoiceItemSerialzer(item, many=False)
         return Response(serializer.data)
     if request.method == 'POST':
-        serializer = InvoiceItemSerialzer(data = request.data)
+        serializer = InvoiceItemSerialzer(instance=item, data = request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response("Failed")
 
 @api_view(['GET', 'POST','DELETE'])
-def invoice_detail(request, id ):
-    invoice = Invoice.objects.get(id = id)
+def invoice_detail(request, id):
+    invoice = Invoice.objects.get(pk = id)
 
     if request.method == 'GET':
         serializer = InvoiceSerializer(invoice, many=False)
         return Response(serializer.data)
     
     elif request.method == 'POST':
-        serializer = InvoiceSerializer(data = request.data)
+        serializer = InvoiceSerializer(instance=invoice, data = request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
