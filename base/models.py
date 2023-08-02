@@ -38,4 +38,3 @@ class Invoice(models.Model):
     from_country = models.CharField(max_length=100)
     payment_term = models.ForeignKey(Payment_Term, on_delete = models.CASCADE, null=True)
     status = models.ForeignKey(Invoice_Status, on_delete = models.CASCADE, null=True)
-    items_list = models.ManyToManyField(Invoice_Items,related_name="items", null=True)
