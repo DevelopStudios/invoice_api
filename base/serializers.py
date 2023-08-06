@@ -6,7 +6,7 @@ class InvoiceItemSerialzer(ModelSerializer):
         model = Invoice_Items
         fields = '__all__'
 
-class InvoiceSerializer(ModelSerializer):    
+class InvoiceSerializer(ModelSerializer):
     class Meta:
         model = Invoice
         fields = '__all__'
