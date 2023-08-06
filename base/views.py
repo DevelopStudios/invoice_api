@@ -40,7 +40,22 @@ def item_list(request):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
+
+@api_view(['GET','POST'])       
+def item_detail(request, id):
+    item = Invoice_Items.objects.get(pk = id)
+    if request.method == 'GET':
+        serializer = InvoiceItemSerialzer(item, many= False)
+        return Response(serializer.data)
     
+    if request.method == 'POST':
+        serializer = InvoiceItemSerialzer(instance=item, data = request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+        return Response("Failed")
+    
+
     
 @api_view(['GET'])
 def payment_terms(request):
