@@ -7,7 +7,7 @@ from .serializers import InvoiceItemSerialzer, InvoiceSerializer, InvoiceStatusS
 
 @api_view(['GET'])
 def endpoints(request):
-    data = ['/invoices','/invoices/:id','/statuses','/payment_terms']
+    data = ['/invoices','/invoices/:id','/statuses','/payment_terms','/items','/items/:id']
     return Response(data)
 
 @api_view(['GET', 'POST','DELETE'])
