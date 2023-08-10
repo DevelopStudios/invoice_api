@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-cagnoxmxnh78!8p^v0u*+xoi*ib1czb0c==q^k6*!tt9f-n#hv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://invoice-api-31fabc85cd9b.herokuapp.com/', 'http://127.0.0.1']
+ALLOWED_HOSTS = ['https://invoice-api-31fabc85cd9b.herokuapp.com/', 'http://127.0.0.1:8000']
 
 
 # Application definition
