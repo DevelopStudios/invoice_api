@@ -1,6 +1,7 @@
 from http.client import NOT_FOUND
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 from .models import Invoice, Invoice_Items, Invoice_Status, Payment_Term
 from .serializers import InvoiceItemSerialzer, InvoiceSerializer, InvoiceStatusSerializer, PaymentTermSerializer
 # Create your views here.
@@ -11,6 +12,7 @@ def endpoints(request):
     return Response(data)
 
 @api_view(['GET', 'POST','DELETE'])
+@permission_classes([IsAuthenticated])
 def invoice_list(request):
     if request.method == 'GET':
         invoices = Invoice.objects.all()
@@ -24,12 +26,14 @@ def invoice_list(request):
             return Response(serializer.data)
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def status_list(request):
     statuses = Invoice_Status.objects.all()
     serializer = InvoiceStatusSerializer(statuses, many=True)
     return Response(serializer.data)
 
 @api_view(['GET','POST'])
+@permission_classes([IsAuthenticated])
 def item_list(request):
     if(request.method == 'GET'):
         items = Invoice_Items.objects.all()
@@ -41,7 +45,8 @@ def item_list(request):
             serializer.save()
             return Response(serializer.data)
 
-@api_view(['GET','POST'])       
+@api_view(['GET','POST']) 
+@permission_classes([IsAuthenticated])      
 def item_detail(request, id):
     item = Invoice_Items.objects.get(pk = id)
     if request.method == 'GET':
@@ -58,6 +63,7 @@ def item_detail(request, id):
 
     
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def payment_terms(request):
     terms = Payment_Term.objects.all()
     serializer = PaymentTermSerializer(terms, many=True)
@@ -65,6 +71,7 @@ def payment_terms(request):
 
     
 @api_view(['GET', 'POST','DELETE'])
+@permission_classes([IsAuthenticated])
 def invoice_detail(request, id):
     invoice = Invoice.objects.get(pk = id)
 
