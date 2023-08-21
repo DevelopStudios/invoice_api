@@ -28,6 +28,9 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['invoice-api-31fabc85cd9b.herokuapp.com','127.0.0.1']
 
+CORS_ORIGIN_WHITELIST = (
+       'http://localhost:4200',
+)
 
 # Application definition
 
