@@ -28,10 +28,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['invoice-api-31fabc85cd9b.herokuapp.com','127.0.0.1']
 
-CORS_ORIGIN_WHITELIST = (
-       'http://localhost:4200',
-)
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -50,7 +47,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

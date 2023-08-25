@@ -4,10 +4,10 @@ from . import views
 
 urlpatterns = [
     path('', views.endpoints),
-    path('invoices', views.invoice_list),
-    path('statuses', views.status_list),
-    path('payment_terms', views.payment_terms),
-    path('invoices/<str:id>/', views.invoice_detail),
-    path('items', views.item_list),
-    path('items/<str:id>/', views.item_detail)
+    path('api/invoices', views.invoice_list),
+    path('api/statuses', views.status_list),
+    path('api/payment_terms', views.payment_terms),
+    path('api/invoices/<str:id>/', views.invoice_detail),
+    path('api/items', views.item_list),
+    path('api/items/<str:id>/', views.item_detail)
 ]
