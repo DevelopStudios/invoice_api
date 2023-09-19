@@ -25,12 +25,18 @@ def invoice_list(request):
             serializer.save()
             return Response(serializer.data)
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def status_list(request):
-    statuses = Invoice_Status.objects.all()
-    serializer = InvoiceStatusSerializer(statuses, many=True)
-    return Response(serializer.data)
+    if(request.method == 'GET'):
+        statuses = Invoice_Status.objects.all()
+        serializer = InvoiceStatusSerializer(statuses, many=True)
+        return Response(serializer.data)
+    if(request.method == 'POST'):
+        serializer = InvoiceStatusSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
 
 @api_view(['GET','POST'])
 @permission_classes([IsAuthenticated])
